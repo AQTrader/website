@@ -23,7 +23,7 @@
 
 本项目通过 GitHub Pages 托管:
 
-[https://aqtrader.github.io/website](https://aqtrader.github.io/website)
+[https://aethermind.info](https://aethermind.info)
 
 ## 📄 许可证
 
