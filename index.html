@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天衍智投 - AI驱动的量化交易平台</title>
+    <meta name="description" content="天衍智投是一个基于人工智能和大语言模型的智能量化交易分析平台，融合先进的深度学习算法与实时市场数据，为投资者提供专业的交易策略与智能决策支持。">
+    <meta name="keywords" content="AI交易, 量化交易, 人工智能, 智能投资, 深度学习, 交易策略, TradingView">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <!-- Animated Background -->
+    <canvas id="bgCanvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2"/>
+                        <path d="M20 6 L26 16 L34 18 L28 24 L29 33 L20 28 L11 33 L12 24 L6 18 L14 16 Z" fill="url(#logoGrad)" opacity="0.8"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="50%" stop-color="#a855f7"/>
+                                <stop offset="100%" stop-color="#06b6d4"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">天衍智投</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="nav-link active">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我们</a></li>
+                <li><a href="#features" class="nav-link">核心功能</a></li>
+                <li><a href="#technology" class="nav-link">技术架构</a></li>
+                <li><a href="#charts" class="nav-link">图表分析</a></li>
+                <li><a href="#team" class="nav-link">团队</a></li>
+                <li><a href="#contact" class="nav-link">联系我们</a></li>
+                <li><a href="en.html" class="nav-link lang-switch" title="Switch to English">EN</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                AI-Powered Quantitative Trading
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">天<span class="text-gradient">衍</span>智投</span>
+                <span class="title-sub">AI驱动的下一代量化交易平台</span>
+            </h1>
+            <p class="hero-description">
+                融合大语言模型与深度学习算法，实时解析全球市场数据流，<br>
+                为专业投资者构建智能化、系统化的交易决策引擎。
+            </p>
+            <div class="hero-actions">
+                <a href="#features" class="btn btn-primary" id="btn-explore">
+                    <span>探索平台</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#technology" class="btn btn-outline" id="btn-tech">
+                    技术架构
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">交易策略模型</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="99.7">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">系统可用性</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-suffix">ms</span>
+                    <span class="stat-label">平均响应延迟</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="trading-card">
+                <div class="card-header">
+                    <div class="card-status live">LIVE</div>
+                    <span class="card-pair">BTC/USDT</span>
+                    <span class="card-change positive">+2.34%</span>
+                </div>
+                <div class="card-chart" id="miniChart"></div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-label">AI信号</span>
+                        <span class="metric-value bullish">强烈看多</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">置信度</span>
+                        <span class="metric-value">94.2%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">预测方向</span>
+                        <span class="metric-value bullish">↑ 上行</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <span>向下滚动</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ABOUT US</span>
+                <h2 class="section-title">关于 <span class="text-gradient">天衍智投</span></h2>
+                <p class="section-subtitle">
+                    「天衍」取自《易经》天衍之数，象征万物演化之规律。<br>
+                    我们致力于用人工智能解码市场的深层逻辑，将古老的哲学智慧与前沿科技完美融合。
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card" id="about-vision">
+                    <div class="about-icon">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="url(#g1)" stroke-width="2"/>
+                            <path d="M24 12V24L32 28" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+                            <defs><linearGradient id="g1" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>愿景</h3>
+                    <p>构建全球领先的AI量化交易生态系统，让每一位投资者都能享受到人工智能带来的精准分析与智能决策。</p>
+                </div>
+                <div class="about-card" id="about-mission">
+                    <div class="about-icon">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L30 16H42L32 24L36 38L24 30L12 38L16 24L6 16H18L24 4Z" stroke="url(#g2)" stroke-width="2" stroke-linejoin="round"/>
+                            <defs><linearGradient id="g2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>使命</h3>
+                    <p>通过大语言模型、深度强化学习与实时数据分析技术，消除信息不对称，赋能投资者做出更明智的交易决策。</p>
+                </div>
+                <div class="about-card" id="about-values">
+                    <div class="about-icon">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="6" width="36" height="36" rx="8" stroke="url(#g3)" stroke-width="2"/>
+                            <path d="M16 24H32M24 16V32" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/>
+                            <defs><linearGradient id="g3" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#06b6d4"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>价值观</h3>
+                    <p>技术驱动、数据为本、风险至上。我们相信科学的方法论是在复杂市场中获得持续优势的唯一途径。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section section-dark" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CORE FEATURES</span>
+                <h2 class="section-title">核心 <span class="text-gradient">功能</span></h2>
+                <p class="section-subtitle">
+                    全方位的智能交易解决方案，从数据采集到策略执行的完整闭环
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card feature-large" id="feature-ai">
+                    <div class="feature-number">01</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="8" fill="url(#fg1)"/>
+                            <circle cx="32" cy="32" r="16" stroke="url(#fg1)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <circle cx="32" cy="32" r="24" stroke="url(#fg1)" stroke-width="1" stroke-dasharray="2 6"/>
+                            <circle cx="32" cy="12" r="3" fill="#a855f7"/>
+                            <circle cx="48" cy="24" r="3" fill="#6366f1"/>
+                            <circle cx="48" cy="40" r="3" fill="#06b6d4"/>
+                            <circle cx="16" cy="40" r="3" fill="#a855f7"/>
+                            <circle cx="16" cy="24" r="3" fill="#06b6d4"/>
+                            <defs><linearGradient id="fg1" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>LLM 智能分析引擎</h3>
+                    <p>基于大语言模型的多维度市场分析系统，能够实时处理新闻、财报、社交媒体等非结构化数据，生成结构化的交易洞察与情绪指标。支持自然语言交互，让复杂的市场分析变得简单直观。</p>
+                    <div class="feature-tags">
+                        <span class="tag">GPT-4 集成</span>
+                        <span class="tag">情绪分析</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                </div>
+                <div class="feature-card" id="feature-realtime">
+                    <div class="feature-number">02</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <polyline points="8,48 20,32 28,40 40,20 52,28 60,16" stroke="url(#fg2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="40" cy="20" r="4" fill="#06b6d4"/>
+                            <defs><linearGradient id="fg2" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#06b6d4"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>实时行情图表</h3>
+                    <p>集成TradingView高级图表库，提供专业级K线图、技术指标与绘图工具。支持多时间框架分析、自定义指标开发与实时数据流推送。</p>
+                    <div class="feature-tags">
+                        <span class="tag">TradingView</span>
+                        <span class="tag">实时数据</span>
+                    </div>
+                </div>
+                <div class="feature-card" id="feature-strategy">
+                    <div class="feature-number">03</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <rect x="8" y="28" width="12" height="28" rx="2" fill="#6366f1" opacity="0.6"/>
+                            <rect x="26" y="16" width="12" height="40" rx="2" fill="#a855f7" opacity="0.6"/>
+                            <rect x="44" y="8" width="12" height="48" rx="2" fill="#06b6d4" opacity="0.6"/>
+                            <path d="M14 28L32 16L50 8" stroke="white" stroke-width="2" stroke-dasharray="4 4"/>
+                        </svg>
+                    </div>
+                    <h3>量化策略回测</h3>
+                    <p>强大的策略回测引擎，支持多品种、多周期的历史数据回测。内置风险评估模型，帮助优化策略参数与仓位管理。</p>
+                    <div class="feature-tags">
+                        <span class="tag">回测引擎</span>
+                        <span class="tag">风险管理</span>
+                    </div>
+                </div>
+                <div class="feature-card" id="feature-signal">
+                    <div class="feature-number">04</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <path d="M32 8V56" stroke="url(#fg4)" stroke-width="2"/>
+                            <path d="M20 20L32 8L44 20" stroke="url(#fg4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="32" cy="32" r="6" stroke="url(#fg4)" stroke-width="2"/>
+                            <circle cx="32" cy="32" r="12" stroke="url(#fg4)" stroke-width="1" stroke-dasharray="3 3"/>
+                            <defs><linearGradient id="fg4" x1="32" y1="0" x2="32" y2="64"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>智能信号推送</h3>
+                    <p>AI模型持续监控市场状态，自动识别交易机会并推送实时信号。支持多通道通知（邮件、Webhook、API），确保第一时间捕捉市场变化。</p>
+                    <div class="feature-tags">
+                        <span class="tag">实时推送</span>
+                        <span class="tag">Webhook</span>
+                    </div>
+                </div>
+                <div class="feature-card" id="feature-risk">
+                    <div class="feature-number">05</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <path d="M32 4L58 20V44L32 60L6 44V20L32 4Z" stroke="url(#fg5)" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M32 16L46 24V40L32 48L18 40V24L32 16Z" fill="url(#fg5)" opacity="0.2"/>
+                            <path d="M26 32L30 36L38 28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs><linearGradient id="fg5" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <h3>全方位风控系统</h3>
+                    <p>多层次风险控制体系，从仓位管理到回撤控制的全链路风控。实时监测投资组合风险敞口，自动执行止损止盈策略。</p>
+                    <div class="feature-tags">
+                        <span class="tag">风控引擎</span>
+                        <span class="tag">止损保护</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="section" id="technology">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">TECH STACK</span>
+                <h2 class="section-title">技术 <span class="text-gradient">架构</span></h2>
+                <p class="section-subtitle">
+                    基于云原生架构，融合前沿AI技术与高性能计算框架
+                </p>
+            </div>
+            <div class="tech-architecture">
+                <div class="arch-layer">
+                    <div class="layer-label">前端展示层</div>
+                    <div class="layer-items">
+                        <div class="tech-item" id="tech-vue">
+                            <div class="tech-icon">⚡</div>
+                            <span>Vue.js 3</span>
+                        </div>
+                        <div class="tech-item" id="tech-tradingview">
+                            <div class="tech-icon">📊</div>
+                            <span>TradingView<br>Advanced Charts</span>
+                        </div>
+                        <div class="tech-item" id="tech-d3">
+                            <div class="tech-icon">📈</div>
+                            <span>D3.js</span>
+                        </div>
+                        <div class="tech-item" id="tech-ws">
+                            <div class="tech-icon">🔌</div>
+                            <span>WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-connector">
+                    <div class="connector-line"></div>
+                    <svg class="connector-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="arch-layer">
+                    <div class="layer-label">服务中台层</div>
+                    <div class="layer-items">
+                        <div class="tech-item" id="tech-node">
+                            <div class="tech-icon">🟢</div>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item" id="tech-python">
+                            <div class="tech-icon">🐍</div>
+                            <span>Python<br>FastAPI</span>
+                        </div>
+                        <div class="tech-item" id="tech-redis">
+                            <div class="tech-icon">🗄️</div>
+                            <span>Redis</span>
+                        </div>
+                        <div class="tech-item" id="tech-kafka">
+                            <div class="tech-icon">📨</div>
+                            <span>Kafka</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-connector">
+                    <div class="connector-line"></div>
+                    <svg class="connector-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="arch-layer">
+                    <div class="layer-label">AI 引擎层</div>
+                    <div class="layer-items">
+                        <div class="tech-item highlight" id="tech-llm">
+                            <div class="tech-icon">🧠</div>
+                            <span>LLM<br>大语言模型</span>
+                        </div>
+                        <div class="tech-item highlight" id="tech-pytorch">
+                            <div class="tech-icon">🔥</div>
+                            <span>PyTorch<br>深度学习</span>
+                        </div>
+                        <div class="tech-item highlight" id="tech-rl">
+                            <div class="tech-icon">🎯</div>
+                            <span>强化学习<br>策略优化</span>
+                        </div>
+                        <div class="tech-item highlight" id="tech-nlp">
+                            <div class="tech-icon">📝</div>
+                            <span>NLP<br>文本分析</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-details">
+                <div class="tech-detail-card" id="detail-tradingview">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="7,16 11,10 14,14 18,8" stroke="url(#dg1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs><linearGradient id="dg1" x1="7" y1="8" x2="18" y2="16"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+                        </svg>
+                        TradingView Advanced Charts 集成
+                    </h3>
+                    <p>
+                        我们深度集成TradingView高级图表库（Advanced Charts Library），为用户提供机构级别的交互式图表体验。通过自定义数据源适配器（Datafeed API），
+                        我们将AI模型的预测结果、自定义技术指标及交易信号直接叠加在专业K线图上，实现分析与可视化的无缝融合。
+                    </p>
+                    <ul class="detail-list">
+                        <li>通过 Datafeed API 接入自有数据源，支持股票、期货、加密货币等多品种实时行情</li>
+                        <li>自定义技术指标开发，将AI模型输出以指标形态展示在图表中</li>
+                        <li>交易信号标注系统：在K线图上实时标记AI生成的买卖信号</li>
+                        <li>多图表联动布局，支持多品种、多周期的同屏对比分析</li>
+                        <li>深色主题定制，与平台整体暗色调设计风格统一协调</li>
+                    </ul>
+                </div>
+                <div class="tech-detail-card" id="detail-ai">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2V6M12 18V22M2 12H6M18 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.6 5.6L8.5 8.5M15.5 15.5L18.4 18.4M5.6 18.4L8.5 15.5M15.5 8.5L18.4 5.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        AI 模型与策略引擎
+                    </h3>
+                    <p>
+                        利用大语言模型（LLM）进行多源信息融合分析，结合深度强化学习（DRL）训练交易策略。
+                        模型涵盖时序预测（Transformer）、情绪分析（BERT/FinBERT）、异常检测等多个维度，
+                        构建立体化的市场认知框架。
+                    </p>
+                    <ul class="detail-list">
+                        <li>基于 Transformer 架构的多维度时序预测模型</li>
+                        <li>FinBERT 金融文本情绪分析引擎</li>
+                        <li>PPO/SAC 深度强化学习策略优化</li>
+                        <li>异常检测与市场状态识别系统</li>
+                        <li>模型性能监控与自动再训练管线</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Demo Section -->
+    <section class="section section-dark" id="charts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CHART ANALYSIS</span>
+                <h2 class="section-title">智能 <span class="text-gradient">图表分析</span></h2>
+                <p class="section-subtitle">
+                    TradingView Advanced Charts 驱动的专业级交互式图表，融合AI分析结果
+                </p>
+            </div>
+            <div class="chart-showcase">
+                <div class="chart-demo" id="chartDemo">
+                    <div class="chart-toolbar">
+                        <div class="toolbar-left">
+                            <button class="toolbar-btn active" data-interval="1D">1D</button>
+                            <button class="toolbar-btn" data-interval="1W">1W</button>
+                            <button class="toolbar-btn" data-interval="1M">1M</button>
+                            <button class="toolbar-btn" data-interval="3M">3M</button>
+                            <button class="toolbar-btn" data-interval="1Y">1Y</button>
+                        </div>
+                        <div class="toolbar-right">
+                            <span class="toolbar-indicator">
+                                <span class="indicator-dot"></span>
+                                AI 信号已激活
+                            </span>
+                        </div>
+                    </div>
+                    <canvas id="demoChart" width="1200" height="500"></canvas>
+                    <div class="chart-overlay-info">
+                        <div class="overlay-item">
+                            <span class="overlay-label">MA(20)</span>
+                            <span class="overlay-value" style="color: #f59e0b">68,432.50</span>
+                        </div>
+                        <div class="overlay-item">
+                            <span class="overlay-label">MA(50)</span>
+                            <span class="overlay-value" style="color: #06b6d4">66,218.30</span>
+                        </div>
+                        <div class="overlay-item">
+                            <span class="overlay-label">RSI(14)</span>
+                            <span class="overlay-value" style="color: #a855f7">62.4</span>
+                        </div>
+                        <div class="overlay-item">
+                            <span class="overlay-label">AI Score</span>
+                            <span class="overlay-value" style="color: #22c55e">87.3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-signals">
+                    <h3>最近AI交易信号</h3>
+                    <div class="signal-list">
+                        <div class="signal-item buy">
+                            <div class="signal-icon">▲</div>
+                            <div class="signal-info">
+                                <div class="signal-header">
+                                    <span class="signal-type">买入信号</span>
+                                    <span class="signal-time">14:32:18</span>
+                                </div>
+                                <div class="signal-detail">BTC/USDT @ 67,850 | 置信度 92.1%</div>
+                            </div>
+                        </div>
+                        <div class="signal-item sell">
+                            <div class="signal-icon">▼</div>
+                            <div class="signal-info">
+                                <div class="signal-header">
+                                    <span class="signal-type">卖出信号</span>
+                                    <span class="signal-time">11:15:42</span>
+                                </div>
+                                <div class="signal-detail">ETH/USDT @ 3,420 | 置信度 88.7%</div>
+                            </div>
+                        </div>
+                        <div class="signal-item buy">
+                            <div class="signal-icon">▲</div>
+                            <div class="signal-info">
+                                <div class="signal-header">
+                                    <span class="signal-type">买入信号</span>
+                                    <span class="signal-time">09:48:05</span>
+                                </div>
+                                <div class="signal-detail">SOL/USDT @ 178.50 | 置信度 85.3%</div>
+                            </div>
+                        </div>
+                        <div class="signal-item hold">
+                            <div class="signal-icon">●</div>
+                            <div class="signal-info">
+                                <div class="signal-header">
+                                    <span class="signal-type">持仓建议</span>
+                                    <span class="signal-time">08:00:00</span>
+                                </div>
+                                <div class="signal-detail">AAPL @ 198.20 | 趋势延续中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">OUR TEAM</span>
+                <h2 class="section-title">核心 <span class="text-gradient">团队</span></h2>
+                <p class="section-subtitle">
+                    汇聚人工智能、量化金融与软件工程领域的顶尖人才
+                </p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card" id="team-ceo">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="30" r="14" fill="url(#ta1)"/>
+                                <path d="M12 72C12 55 24 44 40 44C56 44 68 55 68 72" fill="url(#ta1)"/>
+                                <defs><linearGradient id="ta1" x1="0" y1="0" x2="80" y2="80"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>首席执行官</h3>
+                    <p class="team-role">CEO & Co-Founder</p>
+                    <p class="team-desc">前华尔街量化基金经理，拥有15年量化交易经验，主导多个年化收益超30%的策略开发。</p>
+                </div>
+                <div class="team-card" id="team-cto">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="30" r="14" fill="url(#ta2)"/>
+                                <path d="M12 72C12 55 24 44 40 44C56 44 68 55 68 72" fill="url(#ta2)"/>
+                                <defs><linearGradient id="ta2" x1="0" y1="0" x2="80" y2="80"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>首席技术官</h3>
+                    <p class="team-role">CTO & Co-Founder</p>
+                    <p class="team-desc">前Google高级工程师，深度学习与分布式系统架构专家，拥有多项AI领域核心专利。</p>
+                </div>
+                <div class="team-card" id="team-ai">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="30" r="14" fill="url(#ta3)"/>
+                                <path d="M12 72C12 55 24 44 40 44C56 44 68 55 68 72" fill="url(#ta3)"/>
+                                <defs><linearGradient id="ta3" x1="0" y1="0" x2="80" y2="80"><stop stop-color="#06b6d4"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>AI研究总监</h3>
+                    <p class="team-role">Head of AI Research</p>
+                    <p class="team-desc">MIT机器学习博士，NeurIPS/ICML多篇论文作者，专注于金融时序预测与强化学习策略研究。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CONTACT</span>
+                <h2 class="section-title">联系 <span class="text-gradient">我们</span></h2>
+                <p class="section-subtitle">
+                    如有合作意向或产品咨询，欢迎与我们取得联系
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item" id="contact-email">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                                <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M2 7L12 14L22 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>电子邮件</h4>
+                            <p>contact@tianyan.ai</p>
+                        </div>
+                    </div>
+                    <div class="contact-item" id="contact-github">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12C2 16.42 4.865 20.17 8.839 21.5C9.339 21.59 9.521 21.29 9.521 21.03V19.13C6.727 19.72 6.139 17.77 6.139 17.77C5.685 16.6 5.029 16.3 5.029 16.3C4.121 15.67 5.098 15.68 5.098 15.68C6.101 15.75 6.629 16.71 6.629 16.71C7.521 18.2 8.97 17.76 9.54 17.5C9.63 16.84 9.889 16.39 10.175 16.13C7.954 15.87 5.619 14.96 5.619 11.15C5.619 10.04 6.009 9.13 6.649 8.42C6.549 8.16 6.199 7.12 6.749 5.72C6.749 5.72 7.589 5.44 9.499 6.76C10.299 6.53 11.149 6.42 11.999 6.42C12.849 6.42 13.699 6.53 14.499 6.76C16.409 5.44 17.249 5.72 17.249 5.72C17.799 7.12 17.449 8.16 17.349 8.42C17.989 9.13 18.379 10.04 18.379 11.15C18.379 14.97 16.039 15.87 13.809 16.12C14.169 16.44 14.499 17.07 14.499 18.03V21.03C14.499 21.29 14.679 21.6 15.189 21.5C19.159 20.17 21.999 16.42 21.999 12C21.999 6.477 17.523 2 12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>GitHub</h4>
+                            <p>github.com/tianyan-ai</p>
+                        </div>
+                    </div>
+                    <div class="contact-item" id="contact-address">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>办公地址</h4>
+                            <p>中国 · 上海市浦东新区<br>陆家嘴金融中心</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" name="email" placeholder="请输入您的邮箱地址" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">主题</label>
+                        <select id="subject" name="subject">
+                            <option value="cooperation">商务合作</option>
+                            <option value="product">产品咨询</option>
+                            <option value="tech">技术交流</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">留言</label>
+                        <textarea id="message" name="message" rows="4" placeholder="请输入您的留言内容" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="btn-submit">
+                        <span>发送消息</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="20" r="18" stroke="url(#fLogoGrad)" stroke-width="2"/>
+                                <path d="M20 6 L26 16 L34 18 L28 24 L29 33 L20 28 L11 33 L12 24 L6 18 L14 16 Z" fill="url(#fLogoGrad)" opacity="0.8"/>
+                                <defs>
+                                    <linearGradient id="fLogoGrad" x1="0" y1="0" x2="40" y2="40">
+                                        <stop offset="0%" stop-color="#6366f1"/>
+                                        <stop offset="50%" stop-color="#a855f7"/>
+                                        <stop offset="100%" stop-color="#06b6d4"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span class="logo-text">天衍智投</span>
+                    </div>
+                    <p class="footer-desc">AI驱动的下一代量化交易平台<br>用智能算法洞察市场脉搏</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>产品</h4>
+                        <a href="#features">核心功能</a>
+                        <a href="#charts">图表分析</a>
+                        <a href="#technology">技术架构</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>公司</h4>
+                        <a href="#about">关于我们</a>
+                        <a href="#team">团队</a>
+                        <a href="#contact">联系我们</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>资源</h4>
+                        <a href="#">API文档</a>
+                        <a href="#">开发者中心</a>
+                        <a href="#">帮助中心</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 天衍智投 TianYan AI. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">隐私政策</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">免责声明</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

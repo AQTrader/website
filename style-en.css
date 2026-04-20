@@ -1,0 +1,40 @@
+/* ==========================================
+   AetherMind English Version - Font Override
+   ========================================== */
+
+/* Override Chinese font with Inter for English version */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Override CSS variable for English font */
+:root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Language Switcher */
+.lang-switch {
+    position: relative;
+    font-weight: 600 !important;
+    color: var(--color-primary-light) !important;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 6px;
+    padding: 4px 12px !important;
+    font-size: 0.82rem !important;
+    transition: all var(--transition-fast);
+}
+
+.lang-switch:hover {
+    background: rgba(99, 102, 241, 0.15) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* Slightly adjust hero title for English branding */
+.title-line {
+    letter-spacing: -0.02em;
+}
+
+/* Adjust form & button text for English */
+.form-group select option {
+    font-family: 'Inter', sans-serif;
+}
