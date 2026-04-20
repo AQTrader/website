@@ -23,7 +23,7 @@
 
 本项目通过 GitHub Pages 托管:
 
-[https://your-username.github.io/ai-trading-website](https://your-username.github.io/ai-trading-website)
+[https://aqtrader.github.io/website](https://aqtrader.github.io/website)
 
 ## 📄 许可证
 
