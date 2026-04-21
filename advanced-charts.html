@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Charts - AetherMind</title>
+    <meta name="description" content="Discover why AetherMind integrates TradingView Advanced Charts to deliver unparalleled AI-driven quantitative trading insights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        /* Specific styles for this page */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .comparison-table th {
+            background: rgba(255,255,255,0.02);
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table th:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .highlight-col {
+            background: rgba(99, 102, 241, 0.05);
+            color: var(--color-primary-light);
+        }
+
+        .check-icon {
+            color: var(--color-green);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .cross-icon {
+            color: var(--color-text-muted);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="en.html" class="nav-logo" id="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2" />
+                        <path d="M20 6 L26 16 L34 18 L28 24 L29 33 L20 28 L11 33 L12 24 L6 18 L14 16 Z" fill="url(#logoGrad)" opacity="0.8" />
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#6366f1" />
+                                <stop offset="50%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">AetherMind</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="en.html#hero" class="nav-link">Home</a></li>
+                <li><a href="en.html#about" class="nav-link">About</a></li>
+                <li><a href="en.html#features" class="nav-link">Features</a></li>
+                <li><a href="en.html#technology" class="nav-link">Technology</a></li>
+                <li><a href="advanced-charts.html" class="nav-link active">Advanced Charts</a></li>
+                <li><a href="demo.html" class="nav-link">Interactive Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero" style="min-height: 80vh; padding-top: 160px; text-align: center; flex-direction: column; justify-content: center;">
+        <div class="container">
+            <div class="hero-badge" style="margin: 0 auto 32px auto;">
+                <span class="badge-dot"></span>
+                TradingView Integration
+            </div>
+            <h1 class="hero-title" style="margin-bottom: 30px;">
+                <span class="title-line">The Pinnacle of <span class="text-gradient">AI Charting</span></span>
+            </h1>
+            <p class="hero-description" style="max-width: 800px; margin: 0 auto 40px auto; font-size: 1.15rem;">
+                AetherMind partners with TradingView Advanced Charts to deliver an institutional-grade, multi-asset trading terminal. We merge world-class visualization with our proprietary Deep Reinforcement Learning algorithms.
+            </p>
+            <div class="hero-actions" style="justify-content: center;">
+                <a href="#benefits" class="btn btn-primary">
+                    <span>Explore Capabilities</span>
+                </a>
+                <a href="demo.html" class="btn btn-outline">
+                    View Live Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Advantages Grid -->
+    <section class="section section-dark" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">THE ADVANTAGE</span>
+                <h2 class="section-title">Beyond Basic <span class="text-gradient">Analysis</span></h2>
+                <p class="section-subtitle">
+                    Our platform requires absolute precision. Here is why standard charting libraries simply aren't enough for the AetherMind AI engine.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 4" /><circle cx="32" cy="32" r="16" fill="rgba(99,102,241,0.2)" /><path d="M24 32h16m-8-8v16" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Custom AI Indicators</h3>
+                    <p>Using the Custom Indicators API, we paint predictive probability cones, shifting support zones, and NLP sentiment heatmaps directly onto your price action.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none"><path d="M16 48L48 16M16 16l32 32" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="48" r="4" fill="#06b6d4"/><circle cx="48" cy="16" r="4" fill="#06b6d4"/></svg>
+                    </div>
+                    <h3>Advanced Drawing Tools</h3>
+                    <p>Professional traders demand flexibility. Access 50+ interactive drawing tools including Fibonacci retracements, Gann fans, and Pitchforks instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" fill="none"><rect x="12" y="16" width="40" height="32" rx="4" stroke="#a855f7" stroke-width="2"/><path d="M32 16v32M12 32h40" stroke="#a855f7" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Multi-Chart Workspaces</h3>
+                    <p>Crucial for our Options Scanner: natively split your screen to analyze 4 or 8 synchronized assets side-by-side without browser lag or memory leaks.</p>
+                </div>
+                <div class="feature-card feature-large" style="grid-column: span 3; display: flex; flex-direction: row; gap: 40px; align-items: center;">
+                    <div style="flex: 1;">
+                        <div class="feature-icon" style="margin-bottom: 20px;">
+                            <svg viewBox="0 0 64 64" fill="none"><path d="M8 32h16l8-16 8 32 8-16h16" stroke="#22c55e" stroke-width="2" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>High-Frequency Custom Datafeed</h3>
+                        <p>We process millions of unstructured data points (news, social sentiment) daily. The TradingView Datafeed API allows us to stream this proprietary, non-standard AI data seamlessly alongside real-time crypto and equity feeds, ensuring sub-10ms latency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section" id="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">COMPARISON</span>
+                <h2 class="section-title">The Clear <span class="text-gradient">Winner</span></h2>
+                <p class="section-subtitle">
+                    Why the Advanced Library is the only choice for an institutional platform.
+                </p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Standard / Lightweight Charts</th>
+                        <th class="highlight-col">TradingView Advanced Charts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Built-in Technical Indicators</td>
+                        <td><span class="cross-icon">None</span> (Must build from scratch)</td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> 100+ Included</td>
+                    </tr>
+                    <tr>
+                        <td>Interactive Drawing Tools</td>
+                        <td><span class="cross-icon">None</span> (View-only)</td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> 50+ Professional Tools</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Indicator Development</td>
+                        <td><span class="cross-icon">Limited</span></td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> Full API for AI Outputs</td>
+                    </tr>
+                    <tr>
+                        <td>Multi-Chart Grids (Split Screen)</td>
+                        <td><span class="cross-icon">Requires custom engineering</span></td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> Native Support</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Datafeed Integration</td>
+                        <td><span class="cross-icon">Basic</span></td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> Advanced streaming & pagination</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer" style="padding-top: 60px; padding-bottom: 40px; border-top: 1px solid var(--color-border); margin-top: 40px;">
+        <div class="container" style="text-align: center;">
+            <div class="nav-logo" style="justify-content: center; margin-bottom: 20px;">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2" />
+                        <path d="M20 6 L26 16 L34 18 L28 24 L29 33 L20 28 L11 33 L12 24 L6 18 L14 16 Z" fill="url(#logoGrad)" opacity="0.8" />
+                    </svg>
+                </div>
+                <span class="logo-text">AetherMind</span>
+            </div>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">&copy; 2026 AetherMind Intelligence. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
