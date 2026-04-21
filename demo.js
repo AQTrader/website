@@ -67,8 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial Data
-    let baseData = generateCandleData(100, 68000, 500);
+    let baseData = generateCandleData(1000, 68000, 500);
     candlestickSeries.setData(baseData);
+    chart.timeScale().setVisibleLogicalRange({ from: 850, to: 999 });
 
     // Handle Resize
     window.addEventListener('resize', () => {
@@ -108,8 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Update Chart
             chartTitle.innerText = `BTC/USDT - ${strike} Call Option`;
-            let optionData = generateCandleData(100, cBid, cBid * 0.1);
+            let optionData = generateCandleData(1000, cBid, cBid * 0.1);
             candlestickSeries.setData(optionData);
+            chart.timeScale().setVisibleLogicalRange({ from: 850, to: 999 });
             
             // Clear markers when switching
             if(aiOverlaysActive) {
@@ -118,6 +120,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         optionsBody.appendChild(tr);
+    });
+
+    // --- 3.5 Chart Timeframe Logic ---
+    const toolItems = document.querySelectorAll('.tool-item');
+    toolItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Remove active from all
+            toolItems.forEach(t => t.classList.remove('active'));
+            // Add active to clicked
+            item.classList.add('active');
+            
+            // Determine a base price from the current active row if any, else default
+            let currentPrice = 68000;
+            let volatility = 500;
+            const activeRow = document.querySelector('.options-chain tr.active');
+            if(activeRow) {
+                // If the strike row is active, get the price from the first cell (Call Bid)
+                currentPrice = parseFloat(activeRow.cells[0].innerText) || 68000;
+                volatility = currentPrice * 0.1;
+            }
+            
+            // Re-generate chart data to simulate timeframe change
+            let tfData = generateCandleData(1000, currentPrice, volatility);
+            candlestickSeries.setData(tfData);
+            chart.timeScale().setVisibleLogicalRange({ from: 850, to: 999 });
+            
+            if(aiOverlaysActive) {
+                setTimeout(() => {
+                    candlestickSeries.setMarkers(generateMarkers(tfData));
+                }, 10);
+            }
+        });
     });
 
     // --- 4. AI Overlays & Signals ---
