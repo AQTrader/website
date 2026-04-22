@@ -107,7 +107,35 @@
                     <span class="card-pair">BTC/USDT</span>
                     <span class="card-change positive">+2.34%</span>
                 </div>
-                <div class="card-chart" id="miniChart"></div>
+                <div class="card-chart" style="height: 220px; margin-top: 10px;">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
+                        <div id="tradingview_mini" style="height: 100%; width: 100%;"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                            new TradingView.widget(
+                                {
+                                    "autosize": true,
+                                    "symbol": "BINANCE:BTCUSDT",
+                                    "interval": "60",
+                                    "timezone": "Etc/UTC",
+                                    "theme": "dark",
+                                    "style": "3",
+                                    "locale": "zh_CN",
+                                    "enable_publishing": false,
+                                    "backgroundColor": "rgba(10, 10, 15, 0)",
+                                    "gridColor": "rgba(255, 255, 255, 0)",
+                                    "hide_top_toolbar": true,
+                                    "hide_legend": true,
+                                    "save_image": false,
+                                    "hide_volume": true,
+                                    "container_id": "tradingview_mini"
+                                }
+                            );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
                 <div class="card-metrics">
                     <div class="metric">
                         <span class="metric-label">AI信号</span>
@@ -121,6 +149,9 @@
                         <span class="metric-label">预测方向</span>
                         <span class="metric-value bullish">↑ 上行</span>
                     </div>
+                </div>
+                <div style="margin-top: 16px; font-size: 0.75rem; color: var(--color-text-muted); text-align: center; opacity: 0.7; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.05);">
+                    * 注：市场数据为实时数据，AI指标仅供演示用途。
                 </div>
             </div>
         </div>
@@ -252,7 +283,7 @@
                         </svg>
                     </div>
                     <h3>实时行情图表</h3>
-                    <p>集成TradingView高级图表库，提供专业级K线图、技术指标与绘图工具。支持多时间框架分析、自定义指标开发与实时数据流推送。</p>
+                    <p>集成<a href="https://www.tradingview.com/" target="_blank" rel="noopener" style="color: var(--color-primary-light); text-decoration: none; font-weight: 600;">TradingView</a>高级图表库，提供专业级K线图、技术指标与绘图工具。支持多时间框架分析、自定义指标开发与实时数据流推送。</p>
                     <div class="feature-tags">
                         <span class="tag">TradingView</span>
                         <span class="tag">实时数据</span>
@@ -347,7 +378,7 @@
                         </div>
                         <div class="tech-item" id="tech-tradingview">
                             <div class="tech-icon">📊</div>
-                            <span>TradingView<br>Advanced Charts</span>
+                            <span><a href="https://www.tradingview.com/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; font-weight: 600;">TradingView</a><br>Advanced Charts</span>
                         </div>
                         <div class="tech-item" id="tech-d3">
                             <div class="tech-icon">📈</div>
@@ -430,10 +461,10 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        TradingView Advanced Charts 集成
+                        <a href="https://www.tradingview.com/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">TradingView</a> Advanced Charts 集成
                     </h3>
                     <p>
-                        我们深度集成TradingView高级图表库（Advanced Charts Library），为用户提供机构级别的交互式图表体验。通过自定义数据源适配器（Datafeed API），
+                        我们深度集成<a href="https://www.tradingview.com/" target="_blank" rel="noopener" style="color: var(--color-primary-light); text-decoration: none; font-weight: 600;">TradingView</a>高级图表库（Advanced Charts Library），为用户提供机构级别的交互式图表体验。通过自定义数据源适配器（Datafeed API），
                         我们将AI模型的预测结果、自定义技术指标及交易信号直接叠加在专业K线图上，实现分析与可视化的无缝融合。
                     </p>
                     <ul class="detail-list">
@@ -479,7 +510,7 @@
                 <span class="section-tag">CHART ANALYSIS</span>
                 <h2 class="section-title">智能 <span class="text-gradient">图表分析</span></h2>
                 <p class="section-subtitle">
-                    TradingView Advanced Charts 驱动的专业级交互式图表，融合AI分析结果
+                    <a href="https://www.tradingview.com/" target="_blank" rel="noopener" style="color: var(--color-primary-light); text-decoration: none; font-weight: 600;">TradingView</a> Advanced Charts 驱动的专业级交互式图表，融合AI分析结果
                 </p>
             </div>
             <div class="chart-showcase">
@@ -499,7 +530,32 @@
                             </span>
                         </div>
                     </div>
-                    <canvas id="demoChart" width="1200" height="500"></canvas>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container" style="height: 500px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div id="tradingview_12345" style="height: 500px; width: 100%;"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                            new TradingView.widget(
+                                {
+                                    "autosize": true,
+                                    "symbol": "BINANCE:BTCUSDT",
+                                    "interval": "D",
+                                    "timezone": "Etc/UTC",
+                                    "theme": "dark",
+                                    "style": "1",
+                                    "locale": "zh_CN",
+                                    "enable_publishing": false,
+                                    "backgroundColor": "rgba(10, 10, 15, 1)",
+                                    "gridColor": "rgba(255, 255, 255, 0.05)",
+                                    "hide_top_toolbar": true,
+                                    "hide_legend": false,
+                                    "save_image": false,
+                                    "container_id": "tradingview_12345"
+                                }
+                            );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
                     <div class="chart-overlay-info">
                         <div class="overlay-item">
                             <span class="overlay-label">MA(20)</span>
@@ -562,6 +618,9 @@
                                 <div class="signal-detail">AAPL @ 198.20 | 趋势延续中</div>
                             </div>
                         </div>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 0.8rem; color: var(--color-text-muted); text-align: center; opacity: 0.7; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        * 注：市场数据为实时获取，AI 交易信号及自定义指标仅供演示用途。
                     </div>
                 </div>
             </div>
